@@ -51,8 +51,8 @@ Enemy.prototype.collisions = function() {
         enemyBox.y < playerBox.y + playerBox.height &&
         enemyBox.height + enemyBox.y > playerBox.y) {
             alert("Try again!");
-            player.reset();
-    }
+            Player.reset();
+    } 
 };
 
 
@@ -69,7 +69,7 @@ var player = function(x, y) {
 
 player.prototype.update = function(dt) {
     // make player stay in the screen
-    if(this.x > 505 || this.x < 0 || this.y > 606 || this.y < -40){
+    if(this.x > 465 || this.x < 0 || this.y > 450 || this.y < -50){
       this.reset();
     }
 };
