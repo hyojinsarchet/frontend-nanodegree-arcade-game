@@ -9,8 +9,8 @@ var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.width = 50;
-    this.height = 50;
+    this.width = 60;
+    this.height = 60;
 };
 
 // Update the enemy's position, required method for game
@@ -52,38 +52,46 @@ Enemy.prototype.collisions = function() {
         enemyBox.height + enemyBox.y > playerBox.y) {
             alert("Try again!");
             Player.reset();
-    } 
+    }
 };
 
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var player = function(x, y) {
+var Player = function(x, y) {
   this.sprite = 'images/char-boy.png';
   this.x = 200;
   this.y = 410;
-  this.width = 50;
-  this.height = 50;
-};
+  this.width = 0;
+  this.height = 60;
+  };
 
-player.prototype.update = function(dt) {
+  // var Player = function(x, y) {
+  //   this.sprite = 'images/char-boy.png';
+  //   this.x = x;
+  //   this.y =y;
+  //   this.width = 50;
+  //   this.height = 50;
+  // };
+
+Player.prototype.update = function(dt) {
     // make player stay in the screen
-    if(this.x > 465 || this.x < 0 || this.y > 450 || this.y < -50){
+    if(this.x > 465 || this.x < 0 || this.y > 450 || this.y < 0){
       this.reset();
     }
 };
 
-player.prototype.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-player.prototype.reset = function() {
+Player.prototype.reset = function() {
   this.x = 200;
   this.y = 400;
 };
 
-player.prototype.handleInput = function (key) {
+Player.prototype.handleInput = function (key) {
     switch(key){
       case 'left':
         this.x = this.x - 90;
@@ -102,6 +110,30 @@ player.prototype.handleInput = function (key) {
         break;
     }
 };
+// Player.prototype.handleInput = function (key) {
+//       if (key == "down") {
+//         if (this.y < 400) {
+//             this.y = this.y + 90;
+//         }
+//     } else if (key == "right") {
+//         if (this.x < 350) {
+//             this.x = this.x + 90;
+//         }
+//     } else if (key == "up") {
+//         if (this.y > 40) {
+//             this.y -= 90
+//
+//         } else {
+//             this.reset();
+//         }
+//     } else if (key == "left") {
+//         if (this.x > 50) {
+//             this.x = this.x - 90;
+//         }
+//     }
+//
+// };
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -112,7 +144,7 @@ var allEnemies = [
   new Enemy(10, 220, 90)
 ];
 
-var player = new player(200, 400);
+var player = new Player(200, 400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
