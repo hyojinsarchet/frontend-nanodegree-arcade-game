@@ -51,7 +51,7 @@ Enemy.prototype.collisions = function() {
         enemyBox.y < playerBox.y + playerBox.height &&
         enemyBox.height + enemyBox.y > playerBox.y) {
             alert("Try again!");
-            Player.reset();
+            player.reset();
     }
 };
 
@@ -66,14 +66,6 @@ var Player = function(x, y) {
   this.width = 0;
   this.height = 60;
   };
-
-  // var Player = function(x, y) {
-  //   this.sprite = 'images/char-boy.png';
-  //   this.x = x;
-  //   this.y =y;
-  //   this.width = 50;
-  //   this.height = 50;
-  // };
 
 Player.prototype.update = function(dt) {
     // make player stay in the screen
@@ -110,30 +102,6 @@ Player.prototype.handleInput = function (key) {
         break;
     }
 };
-// Player.prototype.handleInput = function (key) {
-//       if (key == "down") {
-//         if (this.y < 400) {
-//             this.y = this.y + 90;
-//         }
-//     } else if (key == "right") {
-//         if (this.x < 350) {
-//             this.x = this.x + 90;
-//         }
-//     } else if (key == "up") {
-//         if (this.y > 40) {
-//             this.y -= 90
-//
-//         } else {
-//             this.reset();
-//         }
-//     } else if (key == "left") {
-//         if (this.x > 50) {
-//             this.x = this.x - 90;
-//         }
-//     }
-//
-// };
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
